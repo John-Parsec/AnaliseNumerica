@@ -3,6 +3,15 @@ import numpy as np
 import eliminacao_gauss as eg
 
 def inversao_gauss(matrizA: sp.Matrix, matrizB: sp.Matrix) -> sp.Matrix:
+    """Função que resolve um sistema linear pelo método da inversão de matriz.
+
+    Args:
+        matrizA (sp.Matrix): matriz do sistema linear.
+        matrizB (sp.Matrix): vetor do sistema linear.
+
+    Returns:
+        sp.Matrix: vetor solução do sistema linear.
+    """
     matrizA = np.array(matrizA).astype(float)
     matrizB = np.array(matrizB).astype(float)
     

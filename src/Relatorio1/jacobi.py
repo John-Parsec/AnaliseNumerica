@@ -1,6 +1,4 @@
 import sympy as sp
-import numpy as np
-from icecream import ic
 
 def variacao(vet_1, vet_0):
     k1_norm_inf = vet_1.norm(sp.oo)
@@ -13,13 +11,13 @@ def jacobi(matrizB: sp.Matrix, vetorG: sp.Matrix, tol: float, vetor_inical: sp.M
     """Função que calcula o método de Jacobi
 
     Args:
-        matrizB (sp.Matrix): matriz B
-        vetorG (sp.Matrix): vetor G
-        tol (float): taxa de tolerancia de erro
+        matrizB (sp.Matrix): matriz B.
+        vetorG (sp.Matrix): vetor G.
+        tol (float): taxa de tolerancia de erro.
         vet_inical (sp.Matrix, optional): vetor inicial. Default None.
 
     Returns:
-        sp.Matrix: Matriz com os resultados
+        sp.Matrix: vetor solução do sistema linear.
     """
     n = sp.shape(matrizB)[0]
     
@@ -44,10 +42,11 @@ def jacobi(matrizB: sp.Matrix, vetorG: sp.Matrix, tol: float, vetor_inical: sp.M
 
 
 def main():
-    ## EXERCICIO 5.1
+    ## Exercício 5.1
     input = "inputs/jacobi/exercicio-5.1.txt"
     output = "outputs/jacobi/exercicio-5.1.txt"
-    ## EXERCICIO 5.2
+    
+    ## Exercício 5.2
     # input = "inputs/jacobi/exercicio-5.2.txt"
     # output = "outputs/jacobi/exercicio-5.2.txt"
 

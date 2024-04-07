@@ -1,5 +1,4 @@
 import sympy as sp
-import numpy as np
 
 def gauss_jordan(A: sp.Matrix, b: sp.Matrix) -> list:
     """

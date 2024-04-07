@@ -1,5 +1,4 @@
 import sympy as sp
-from icecream import ic
 
 def decomposicao_LU(matrizA):
     """Decomposição LU de uma matriz de coeficientes.

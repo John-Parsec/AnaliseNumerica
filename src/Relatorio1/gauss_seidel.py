@@ -12,7 +12,7 @@ def gauss_seidel(matrizA: sp.Matrix, matrizB: sp.Matrix, x0: sp.Matrix, tol: flo
         maxiter (int, optional): maximo de iterações. Default 1000.
 
     Returns:
-        np.array: matriz de solução
+        sp.Matrix: vetor solução do sistema linear.
     """
     n = len(matrizB)
     
