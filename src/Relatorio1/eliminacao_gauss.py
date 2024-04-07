@@ -1,9 +1,32 @@
 import sympy as sp
 import numpy as np
 
-def eliminacao_de_gauss(matrizA, matrizB) -> np.array:
-    matrizA = np.array(matrizA)
-    matrizB = np.array(matrizB)
+def eliminacao_de_gauss(matrizA: np.ndarray, matrizB: np.ndarray) -> np.ndarray:
+    """Resolve um sistema de equações lineares utilizando o método da eliminação de Gauss.
+
+    Args:
+        matrizA (np.ndarray): matriz de coeficientes
+        matrizB (np.ndarray): matriz de termos independentes
+
+    Returns:
+        np.ndarray: vetor solução
+    """
+    if matrizA is None or matrizB is None:
+        raise ValueError("matrizA e matrizB não podem ser None")
+    
+    if not isinstance(matrizA, np.ndarray) or not isinstance(matrizB, np.ndarray):
+        try:
+            matrizA = np.array(matrizA)
+            matrizB = np.array(matrizB)
+        except:
+            raise ValueError("matrizA e matrizB devem ser do tipo numpy.ndarray")
+    
+    if matrizA.shape[0] != matrizA.shape[1]:
+        raise ValueError("A matriz A deve ser quadrada")
+    
+    if matrizA.shape[0] != matrizB.shape[0]:
+        raise ValueError("O número de linhas de A deve ser igual ao número de linhas de B")
+    
     n = matrizB.shape[0]
 
     # Eliminação gaussiana
@@ -44,6 +67,9 @@ def main():
             matrizA = matrizA.row_insert(i-2, sp.Matrix([entrada[i].split(' ')]))
     
     with open(output, 'w') as file:
+        matrizA = np.array(matrizA)
+        matrizB = np.array(matrizB)
+        
         result = eliminacao_de_gauss(matrizA, matrizB)
         
         result = [round(float(i), 5) for i in result]
