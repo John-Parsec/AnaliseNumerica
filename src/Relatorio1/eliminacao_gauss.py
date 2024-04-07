@@ -66,14 +66,14 @@ def main():
         for i in range(2, len(entrada)):
             matrizA = matrizA.row_insert(i-2, sp.Matrix([entrada[i].split(' ')]))
     
+    matrizA = np.array(matrizA)
+    matrizB = np.array(matrizB)
+    
+    result = eliminacao_de_gauss(matrizA, matrizB)
+    
+    result = [round(float(i), 5) for i in result]
+        
     with open(output, 'w') as file:
-        matrizA = np.array(matrizA)
-        matrizB = np.array(matrizB)
-        
-        result = eliminacao_de_gauss(matrizA, matrizB)
-        
-        result = [round(float(i), 5) for i in result]
-        
         file.write(str(result))
     
 if __name__ == "__main__":
