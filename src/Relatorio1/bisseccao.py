@@ -1,16 +1,16 @@
 import sympy as sp
 
-def bisseccao(f, a, b, tol) -> float:
+def bisseccao(f: sp.Expr, a: sp.Float, b: sp.Float, tol: sp.Rational) -> float:
     """Funcao que calcula a raiz de uma funcao f(x) pelo metodo da bisseccao
 
     Args:
-        f (function): funcao a ser avaliada
-        a (float): limite inferior
-        b (float): limite superior
-        tol (float): taxa de tolerancia (erro absoluto)
+        f (sp.Expr): Expressão da função a ser avaliada
+        a (sp.Float): Limite inferior
+        b (sp.Float): Limite superior
+        tol (sp.Rational): Taxa de tolerancia (erro absoluto)
 
     Returns:
-        float: raiz da funcao f(x)
+        float: Raiz da funcao f(x)
     """
     x = sp.symbols('x')
     

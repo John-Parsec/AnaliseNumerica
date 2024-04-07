@@ -1,6 +1,17 @@
 import sympy as sp
 
-def posicao_falsa(f, a, b, tol):
+def posicao_falsa(f: sp.Expr, a: sp.Float, b: sp.Float, tol: sp.Rational) -> float:
+    """Função que calcula a raiz de uma função f(x) utilizando o método da posição falsa.
+
+    Args:
+        f (sp.Expr): Expressão da função a ser avaliada
+        a (sp.Float): Ponto a
+        b (sp.Float): Ponto b
+        tol (sp.Rational): Taxa de tolerancia (erro absoluto)
+
+    Returns:
+        float: Raiz da função f(x)
+    """
     x = sp.symbols('x')
     
     k = 1

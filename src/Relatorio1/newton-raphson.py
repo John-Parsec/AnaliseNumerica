@@ -1,15 +1,15 @@
 import sympy as sp
 
-def newton_raphson(f, x0, tol) -> float:
+def newton_raphson(f: sp.Expr, x0: sp.Float, tol: sp.Rational) -> float:
     """Funcao que calcula a raiz de uma funcao f(x) pelo metodo de Newton-Raphson
 
     Args:
-        f (function): funcao a ser avaliada
-        x0 (): valor inicial
-        tol (float): taxa de tolerancia (erro absoluto)
+        f (sp.Expr): Expressão da função a ser avaliada
+        x0 (sp.Float): Valor inicial
+        tol (float): Taxa de tolerancia (erro absoluto)
 
     Returns:
-        float: raiz da funcao f(x)
+        float: Raiz da funcao f(x)
     """
     x = sp.symbols('x')
     
