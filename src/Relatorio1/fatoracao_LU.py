@@ -95,7 +95,7 @@ def main():
     else:
         entrada = entrada.split('\n')
         
-        matrizB = sp.Matrix(entrada[1].split(' '))
+        matrizB = sp.Matrix(entrada[0].split(' '))
         
         matrizX = sp.Matrix([])
         for i in range(len(matrizB)):
@@ -103,8 +103,8 @@ def main():
             matrizX = matrizX.row_insert(i, sp.Matrix([sp.symbols(nome)]))
         
         matrizA = sp.Matrix([])
-        for i in range(2, len(entrada)):
-            matrizA = matrizA.row_insert(i-2, sp.Matrix([entrada[i].split(' ')]))
+        for i in range(1, len(entrada)):
+            matrizA = matrizA.row_insert(i-1, sp.Matrix([entrada[i].split(' ')]))
             
     result = fatoracao_LU(matrizA, matrizB, matrizX)
     

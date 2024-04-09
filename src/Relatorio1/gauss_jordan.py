@@ -45,11 +45,11 @@ def main():
     else:
         entrada = entrada.split('\n')
         
-        matrizB = sp.Matrix(entrada[1].split(' '))
+        matrizB = sp.Matrix(entrada[0].split(' '))
         
         matrizA = sp.Matrix([])
-        for i in range(2, len(entrada)):
-            matrizA = matrizA.row_insert(i-2, sp.Matrix([entrada[i].split(' ')]))
+        for i in range(1, len(entrada)):
+            matrizA = matrizA.row_insert(i-1, sp.Matrix([entrada[i].split(' ')]))
     
     result = gauss_jordan(matrizA, matrizB)
     
