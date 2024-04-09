@@ -66,11 +66,11 @@ def main():
         if haveX0:
             n = sp.simplify(entrada[1])
             x0 = sp.Matrix(entrada[0].split(' ')[1:])
-            precisao = sp.simplify(entrada[2])
+            tol = sp.simplify(entrada[2])
             b = sp.Matrix(entrada[3].split(' '))
         else:
             n = sp.simplify(entrada[0])
-            precisao = sp.simplify(entrada[1])
+            tol = sp.simplify(entrada[1])
             b = sp.Matrix(entrada[2].split(' '))
             x0 = None
 
@@ -103,7 +103,7 @@ def main():
     for i in range(n):
         vetorG[i,0] /= matrizA[i,i]
     
-    result = jacobi(matrizB, vetorG, precisao, x0)
+    result = jacobi(matrizB, vetorG, tol, x0)
     
     with open(output, 'w') as file:
         for i in range(n):
