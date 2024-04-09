@@ -49,6 +49,10 @@ def main():
     ## Exercício 5.2
     # input = "inputs/jacobi/exercicio-5.2.txt"
     # output = "outputs/jacobi/exercicio-5.2.txt"
+    
+    ## Exercício 5.5
+    # input = "inputs/jacobi/exercicio-5.5.txt"
+    # output = "outputs/jacobi/exercicio-5.5.txt"
 
     with open(input, 'r') as file:
         entrada = file.read()

@@ -33,13 +33,17 @@ def gauss_seidel(matrizA: sp.Matrix, matrizB: sp.Matrix, x0: sp.Matrix, tol: flo
     return sp.Matrix(x0)
 
 def main():
-     ## Exercício 5.1
+    ## Exercício 5.1
     input = "inputs/gauss-seidel/exercicio-5.1.txt"
     output = "outputs/gauss-seidel/exercicio-5.1.txt"
     
     ## Exercício 5.2
     # input = "inputs/gauss-seidel/exercicio-5.2.txt"
     # output = "outputs/gauss-seidel/exercicio-5.2.txt"
+    
+    ## Exercício 5.5
+    # input = "inputs/gauss-seidel/exercicio-5.5.txt"
+    # output = "outputs/gauss-seidel/exercicio-5.5.txt"
     
     with open(input, 'r') as file:
         entrada = file.read()

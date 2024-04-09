@@ -21,9 +21,17 @@ def inversao_gauss(matrizA: sp.Matrix, matrizB: sp.Matrix) -> sp.Matrix:
     return sp.Matrix(matrizX)
 
 def main():
-     ## Exercício 5.5
-    input = "inputs/inversao_gauss/exercicio-5.5.txt"
-    output = "outputs/inversao_gauss/exercicio-5.5.txt"
+    ## Exercício 5.1
+    input = "inputs/inversao_gauss/exercicio-5.1.txt"
+    output = "outputs/inversao_gauss/exercicio-5.1.txt"
+    
+    ## Exercício 5.2
+    # input = "inputs/inversao_gauss/exercicio-5.2.txt"
+    # output = "outputs/inversao_gauss/exercicio-5.2.txt"
+    
+    ## Exercício 5.5
+    # input = "inputs/inversao_gauss/exercicio-5.5.txt"
+    # output = "outputs/inversao_gauss/exercicio-5.5.txt"
     
     with open(input, 'r') as file:
         entrada = file.read()
