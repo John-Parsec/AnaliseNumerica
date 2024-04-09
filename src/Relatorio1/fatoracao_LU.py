@@ -1,6 +1,6 @@
 import sympy as sp
 
-def decomposicao_LU(matrizA):
+def decomposicao_LU(matrizA: sp.Matrix) -> tuple[sp.Matrix, sp.Matrix]:
     """Decomposição LU de uma matriz de coeficientes.
 
     Args:
