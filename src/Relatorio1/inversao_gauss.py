@@ -1,6 +1,5 @@
 import sympy as sp
 import numpy as np
-import eliminacao_gauss as eg
 
 def inversao_gauss(matrizA: sp.Matrix, matrizB: sp.Matrix) -> sp.Matrix:
     """Função que resolve um sistema linear pelo método da inversão de matriz.
