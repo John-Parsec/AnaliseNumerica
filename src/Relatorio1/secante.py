@@ -6,13 +6,13 @@ def secante(f: sp.Expr, x0: sp.Float, x1: sp.Float, tol: sp.Rational) -> float:
     """Função que calcula a raiz de uma função f(x) utilizando o método da secante.
 
     Args:
-        f (sp.Expr): Expressão da função a ser avaliada
-        x0 (sp.Float): Ponto inicial x0
-        x1 (sp.Float): Ponto inicial x1
-        tol (sp.Rational): Taxa de tolerancia (erro absoluto)
+        f (sp.Expr): Expressão da função a ser avaliada.
+        x0 (sp.Float): Ponto inicial x0.
+        x1 (sp.Float): Ponto inicial x1.
+        tol (sp.Rational): Taxa de tolerancia (erro absoluto).
 
     Returns:
-        float: Raiz da função f(x)
+        float: Raiz da função f(x).
     """
     if x0 == x1:
         return None

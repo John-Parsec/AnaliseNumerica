@@ -1,31 +1,31 @@
 import sympy as sp
 import numpy as np
 
-def gauss_seidel(matrizA: sp.Matrix, matrizB: sp.Matrix, x0: sp.Matrix, tol: float, maxiter = 1000) -> sp.Matrix:
+def gauss_seidel(matrizA: sp.Matrix, vetorB: sp.Matrix, x0: sp.Matrix, tol: float, maxiter = 1000) -> sp.Matrix:
     """Soluciona um sistema linear utilizando o método de Gauss-Seidel.
 
     Args:
-        matrizA (sp.Matrix): matriz de coeficientes
-        matrizB (sp.Matrix): matriz de termos independentes
-        x0 (sp.Matrix): matriz de variáveis
-        tol (float): taxa de tolerância
-        maxiter (int, optional): maximo de iterações. Default 1000.
+        matrizA (sp.Matrix): Matriz de coeficientes.
+        vetorB (sp.Matrix): Vetor de termos independentes.
+        x0 (sp.Matrix): Matriz de variáveis.
+        tol (float): Taxa de tolerância.
+        maxiter (int, opcional): Maximo de iterações. Default 1000.
 
     Returns:
-        sp.Matrix: vetor solução do sistema linear.
+        sp.Matrix: Vetor solução do sistema linear.
     """
-    n = len(matrizB)
+    n = len(vetorB)
     
     x0 = np.array(x0).astype(float)
     matrizA = np.array(matrizA).astype(float)
-    matrizB = np.array(matrizB).astype(float)
+    vetorB = np.array(vetorB).astype(float)
     
     for k in range(maxiter):
         x_old = np.copy(x0)
         for i in range(n):
             s1 = sum(matrizA[i, j] * x0[j] for j in range(i))
             s2 = sum(matrizA[i, j] * x_old[j] for j in range(i+1, n))
-            x0[i] = (matrizB[i] - s1 - s2) / matrizA[i, i]
+            x0[i] = (vetorB[i] - s1 - s2) / matrizA[i, i]
 
         if np.linalg.norm(x0 - x_old) < tol:
             break

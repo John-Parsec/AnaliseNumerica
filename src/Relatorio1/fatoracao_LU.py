@@ -4,11 +4,10 @@ def decomposicao_LU(matrizA: sp.Matrix) -> tuple[sp.Matrix, sp.Matrix]:
     """Decomposição LU de uma matriz de coeficientes.
 
     Args:
-        matrizA: matriz de coeficientes
+        matrizA: Matriz de coeficientes.
 
     Returns:
-        L: matriz triangular inferior
-        U: matriz triangular superior
+        uple[sp.Matrix, sp.Matrix]: (Matriz triangular inferior, Matriz triangular superior).
     """
     n = sp.shape(matrizA)[0]
     
@@ -35,21 +34,21 @@ def decomposicao_LU(matrizA: sp.Matrix) -> tuple[sp.Matrix, sp.Matrix]:
                 
     return matL, matU
 
-def solucao(matrizA, matrizB, matrizX) -> sp.Matrix:
+def solucao(matrizA, vetorB, matrizX) -> sp.Matrix:
     """Solução de um sistema linear.
 
     Args:
-        matrizA (sp.Matrix): matriz de coeficientes
-        matrizB (sp.Matrix): matriz de termos independentes
-        matrizX (sp.Matrix): matriz de variáveis
+        matrizA (sp.Matrix): Matriz de coeficientes.
+        vetorB (sp.Matrix): Vetor de termos independentes.
+        matrizX (sp.Matrix): Matriz de variáveis.
 
     Returns:
-        sp.Matrix: matriz de solução
+        sp.Matrix: Matriz de solução.
     """
     n = sp.shape(matrizA)[0]
     variaveis = sp.symbols('x0:%d' % n)
     
-    solucao = sp.solve(matrizA*matrizX - matrizB, variaveis)
+    solucao = sp.solve(matrizA*matrizX - vetorB, variaveis)
 
     matriz_solucao = sp.Matrix([])
     for i in range(n):
@@ -57,22 +56,22 @@ def solucao(matrizA, matrizB, matrizX) -> sp.Matrix:
     
     return matriz_solucao
 
-def fatoracao_LU(matrizA, matrizB, matrizX) -> sp.Matrix:
+def fatoracao_LU(matrizA, vetorB, matrizX) -> sp.Matrix:
     """Fatoração LU de uma matriz de coeficientes.
 
     Args:
-        matrizA (sp.Matrix): matriz de coeficientes
-        matrizB (sp.Matrix): matriz de termos independentes
-        matrizX (sp.Matrix): matriz de variáveis
+        matrizA (sp.Matrix): Matriz de coeficientes.
+        vetorB (sp.Matrix): Vetpr de termos independentes.
+        matrizX (sp.Matrix): Matriz de variáveis.
 
     Returns:
-        sp.Matrix: matriz de solução
+        sp.Matrix: Matriz de solução.
     """
     L, U = decomposicao_LU(matrizA)
     
     matrizY = matrizX.copy()
     
-    matrizY = solucao(L, matrizB, matrizY)
+    matrizY = solucao(L, vetorB, matrizY)
     
     matriz_solucao = solucao(U, matrizY, matrizX)
     
@@ -95,10 +94,10 @@ def main():
     else:
         entrada = entrada.split('\n')
         
-        matrizB = sp.Matrix(entrada[0].split(' '))
+        vetorB = sp.Matrix(entrada[0].split(' '))
         
         matrizX = sp.Matrix([])
-        for i in range(len(matrizB)):
+        for i in range(len(vetorB)):
             nome = 'x' + str(i)
             matrizX = matrizX.row_insert(i, sp.Matrix([sp.symbols(nome)]))
         
@@ -106,7 +105,7 @@ def main():
         for i in range(1, len(entrada)):
             matrizA = matrizA.row_insert(i-1, sp.Matrix([entrada[i].split(' ')]))
             
-    result = fatoracao_LU(matrizA, matrizB, matrizX)
+    result = fatoracao_LU(matrizA, vetorB, matrizX)
     
     result = [round(float(i), 5) for i in result]
     

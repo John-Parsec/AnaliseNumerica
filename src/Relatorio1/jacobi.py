@@ -11,13 +11,13 @@ def jacobi(matrizB: sp.Matrix, vetorG: sp.Matrix, tol: float, vetor_inical: sp.M
     """Função que calcula o método de Jacobi
 
     Args:
-        matrizB (sp.Matrix): matriz B.
-        vetorG (sp.Matrix): vetor G.
-        tol (float): taxa de tolerancia de erro.
-        vet_inical (sp.Matrix, optional): vetor inicial. Default None.
+        matrizB (sp.Matrix): Matriz B.
+        vetorG (sp.Matrix): Vetor G.
+        tol (float): Taxa de tolerancia de erro.
+        vet_inical (sp.Matrix, optional): Vetor inicial. Default None.
 
     Returns:
-        sp.Matrix: vetor solução do sistema linear.
+        sp.Matrix: Vetor solução do sistema linear.
     """
     n = sp.shape(matrizB)[0]
     
@@ -39,7 +39,6 @@ def jacobi(matrizB: sp.Matrix, vetorG: sp.Matrix, tol: float, vetor_inical: sp.M
         erro_abs, erro_rel = variacao(vet_1, vet_0)
         
     return vet_0
-
 
 def main():
     ## Exercício 5.1

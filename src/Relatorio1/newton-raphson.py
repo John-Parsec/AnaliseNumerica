@@ -4,12 +4,12 @@ def newton_raphson(f: sp.Expr, x0: sp.Float, tol: sp.Rational) -> float:
     """Funcao que calcula a raiz de uma funcao f(x) pelo metodo de Newton-Raphson
 
     Args:
-        f (sp.Expr): Expressão da função a ser avaliada
-        x0 (sp.Float): Valor inicial
-        tol (float): Taxa de tolerancia (erro absoluto)
+        f (sp.Expr): Expressão da função a ser avaliada.
+        x0 (sp.Float): Valor inicial.
+        tol (float): Taxa de tolerancia (erro absoluto).
 
     Returns:
-        float: Raiz da funcao f(x)
+        float: Raiz da funcao f(x).
     """
     x = sp.symbols('x')
     

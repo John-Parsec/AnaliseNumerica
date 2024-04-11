@@ -4,13 +4,13 @@ def posicao_falsa(f: sp.Expr, a: sp.Float, b: sp.Float, tol: sp.Rational) -> flo
     """Função que calcula a raiz de uma função f(x) utilizando o método da posição falsa.
 
     Args:
-        f (sp.Expr): Expressão da função a ser avaliada
-        a (sp.Float): Ponto a
-        b (sp.Float): Ponto b
-        tol (sp.Rational): Taxa de tolerancia (erro absoluto)
+        f (sp.Expr): Expressão da função a ser avaliada.
+        a (sp.Float): Ponto a.
+        b (sp.Float): Ponto b.
+        tol (sp.Rational): Taxa de tolerancia (erro absoluto).
 
     Returns:
-        float: Raiz da função f(x)
+        float: Raiz da função f(x).
     """
     x = sp.symbols('x')
     
