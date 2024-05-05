@@ -1,0 +1,2 @@
+Integral simples por Simpson 1/3: 1.15071891669561
+Integral múltipla por Simpson 1/3: 1.11520898151041

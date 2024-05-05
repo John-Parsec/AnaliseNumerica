@@ -1,6 +1,5 @@
 import sympy as sp
 
-# ((b-a)/8)*(f(x0) + (3*f(x1)) + (3*f(x2))+ f(x3))
 def simpson_3_8(f, lim_inf, lim_sup, file): 
     x = sp.symbols('x')
     
@@ -20,6 +19,7 @@ def simpson_3_8(f, lim_inf, lim_sup, file):
         
         file.write(f"f({x}, {n}) : {str(f_xn)}\n")
     
+    # ((b-a)/8)*(f(x0) + (3*f(x1)) + (3*f(x2))+ f(x3))
     return ((lim_sup - lim_inf)/8)*(f_xns[0] + (3*f_xns[1]) + (3*f_xns[2]) + f_xns[3])
 
 def main():

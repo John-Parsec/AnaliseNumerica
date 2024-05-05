@@ -29,9 +29,11 @@ def main():
     # Exercício 11.1
     input = "inputs/quadratura_gauss/exercicio_11.1.txt"
     output = "outputs/quadratura_gauss/exercicio_11.1.txt"
+    
     # Exercício 11.6
     # input = "inputs/quadratura_gauss/exercicio_11.6.txt"
-    # output = "outputs/quadratura_gauss/exercicio_11..txt"
+    # output = "outputs/quadratura_gauss/exercicio_11.6.txt"
+    
     # Exercício 11.11
     # input = "inputs/quadratura_gauss/exercicio_11.11.txt"
     # output = "outputs/quadratura_gauss/exercicio_11.11.txt" 
