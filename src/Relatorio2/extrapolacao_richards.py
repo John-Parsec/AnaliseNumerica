@@ -1,5 +1,6 @@
 import sympy as sp
 from typing import TextIO
+from testes import verifica_integral
 
 def extrapolacao_richards(f: sp.Expr, lim_inf: sp.Float, lim_sup: sp.Float, n1: int, n2: int, file: TextIO) -> sp.Float:
     """Calcula a integral de uma função f no intervalo [lim_inf, lim_sup] usando a extrapolação de Richardson
@@ -86,6 +87,9 @@ def main():
     
     with open(output, 'w') as out_file:
         i1, i2, h1, h2, integral = extrapolacao_richards(f, lim_inf, lim_sup, n1, n2, out_file)
+        
+        # Testando se a integral está correta
+        verifica_integral(f, integral, lim_inf, lim_sup, out_file)
         
         out_file.write(f"I({h1}) = {i1}\n")
         out_file.write(f"I({h2}) = {i2}\n")

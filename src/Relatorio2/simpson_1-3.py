@@ -1,4 +1,5 @@
 import sympy as sp
+from testes import verifica_integral
 
 def simpson_mult(f: sp.Expr, lim_inf: sp.Float, lim_sup: sp.Float, n_segments: int) -> sp.Float:
     """Calcula a integral de uma função f no intervalo [lim_inf, lim_sup] usando a regra de Simpson 1/3 múltipla
@@ -83,6 +84,14 @@ def main():
     with open(output, 'w') as out_file:
         integral_simples = simpson_1_3(f, lim_inf, lim_sup)
         integral_mult = simpson_mult(f, lim_inf, lim_sup, divs)
+        
+        # Testando se o resultado da integral simples está correto
+        out_file.write(f"Integral Simples\n")
+        verifica_integral(f, integral_simples, lim_inf, lim_sup, out_file)
+        
+        # Testando se o resultado da integral multipla está correto        
+        out_file.write(f"Integral Simples\n")
+        verifica_integral(f, integral_simples, lim_inf, lim_sup, out_file)
         
         out_file.write(f"Integral simples por Simpson 1/3: {integral_simples}\n")
         out_file.write(f"Integral múltipla por Simpson 1/3: {integral_mult}\n")

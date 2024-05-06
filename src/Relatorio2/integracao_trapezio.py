@@ -1,4 +1,5 @@
 import sympy as sp
+from testes import verifica_integral
 
 # Calcula a integral de f(x) no intervalo [lim_inf, lim_sup] com n segmentos
 def trapezio_mult(f: sp.Expr, lim_inf: sp.Float, lim_sup: sp.Float, n_segments: int) -> sp.Float:
@@ -74,6 +75,14 @@ def main():
     with open(output, 'w') as out_file:
         integral_simples = trapezio_simples(f, lim_inf, lim_sup)
         integral_mult = trapezio_mult(f, lim_inf, lim_sup, divs)
+        
+        # Testando se o resultado da integral simples está correto
+        out_file.write(f"Integral Simples\n")
+        verifica_integral(f, integral_simples, lim_inf, lim_sup, out_file)
+        
+        # Testando se o resultado da integral multipla está correto        
+        out_file.write(f"Integral Simples\n")
+        verifica_integral(f, integral_simples, lim_inf, lim_sup, out_file)
         
         out_file.write(f"Integral simples: " + str(integral_simples) + "")
         out_file.write(f"\nIntegral múltipla: " + str(integral_mult) + "")

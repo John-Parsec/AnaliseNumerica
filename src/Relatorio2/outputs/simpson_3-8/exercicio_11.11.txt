@@ -2,5 +2,9 @@ f(x, 4.99100000000000) : 63.6619772367581
 f(x, 4.99400000000000) : 76.2172245185128
 f(x, 4.99700000000000) : 130.789280290455
 f(x, 5.00000000000000) : 321.689720708392
+Resultado da integral pela Quadratura Adaptativa de Gauss-Kronrod: 1.1152089709758881
+Erro pela Quadratura Adaptativa de Gauss-Kronrod: 1.238130676845959e-14
+Erro relativo entre meu resultado e o da Quadratura Adaptativa de Gauss-Kronrod: 0.0149789154310981
+
 
 Integral por Simpson 3/8: 1.13216761391860

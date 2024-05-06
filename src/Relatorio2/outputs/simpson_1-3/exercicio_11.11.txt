@@ -1,2 +1,12 @@
+Integral Simples
+Resultado da integral pela Quadratura Adaptativa de Gauss-Kronrod: 1.1152089709758881
+Erro pela Quadratura Adaptativa de Gauss-Kronrod: 1.238130676845959e-14
+Erro relativo entre meu resultado e o da Quadratura Adaptativa de Gauss-Kronrod: 0.0308589223697550
+
+Integral Simples
+Resultado da integral pela Quadratura Adaptativa de Gauss-Kronrod: 1.1152089709758881
+Erro pela Quadratura Adaptativa de Gauss-Kronrod: 1.238130676845959e-14
+Erro relativo entre meu resultado e o da Quadratura Adaptativa de Gauss-Kronrod: 0.0308589223697550
+
 Integral simples por Simpson 1/3: 1.15071891669561
 Integral múltipla por Simpson 1/3: 1.11520898151041

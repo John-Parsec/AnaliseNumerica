@@ -1,5 +1,6 @@
 import sympy as sp
 from typing import TextIO
+from testes import verifica_integral
 
 def simpson_3_8(f: sp.Expr, lim_inf: sp.Float, lim_sup: sp.Float, file: TextIO) -> sp.Float:
     """Calcula a integral de uma função f no intervalo [lim_inf, lim_sup] usando a regra de Simpson 3/8
@@ -63,6 +64,9 @@ def main():
     
     with open(output, 'w') as out_file:
         integral = simpson_3_8(f, lim_inf, lim_sup, out_file)
+        
+        # Testando se a integral está correta
+        verifica_integral(f, integral, lim_inf, lim_sup, out_file)
         
         out_file.write("\n")
         out_file.write(f"Integral por Simpson 3/8: {integral}\n")
