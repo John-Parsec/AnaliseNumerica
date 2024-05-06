@@ -1,6 +1,20 @@
 import sympy as sp
+from typing import TextIO
 
-def extrapolacao_richards(f, lim_inf, lim_sup, n1, n2, file):
+def extrapolacao_richards(f: sp.Expr, lim_inf: sp.Float, lim_sup: sp.Float, n1: int, n2: int, file: TextIO) -> sp.Float:
+    """Calcula a integral de uma função f no intervalo [lim_inf, lim_sup] usando a extrapolação de Richardson
+
+    Args:
+        f (sp.Expr): Expressão a ser integrada
+        lim_inf (sp.Float): Limite inferior da integral
+        lim_sup (sp.Float): Limite superior da integral
+        n1 (int): Número de segmentos para a primeira aproximação
+        n2 (int): Número de segmentos para a segunda aproximação
+        file (TextIO): Arquivo de saída
+
+    Returns:
+        sp.Float: Integral da função f no intervalo [lim_inf, lim_sup]
+    """
     # Aproximações das integrais para n1 e n2, usando trapezios multiplos
     i1 = trapezio_mult(f, lim_inf, lim_sup, n1)
     i2 = trapezio_mult(f, lim_inf, lim_sup, n2)
@@ -15,21 +29,32 @@ def extrapolacao_richards(f, lim_inf, lim_sup, n1, n2, file):
     # I = I2 + ((I2 - I1)/((h1/h2)^2 - 1))    
     return i1, i2, h1, h2, i2 + ((i2 - i1)/((h1/h2)**2 - 1))
 
-def trapezio_mult(f, lim_inf, lim_sup, segments): 
+def trapezio_mult(f: sp.Expr, lim_inf: sp.Float, lim_sup: sp.Float, n_segments: int) -> sp.Float:
+    """Calcula a integral de uma função f no intervalo [lim_inf, lim_sup] usando a regra do trapezio múltiplo
+
+    Args:
+        f (sp.Expr): Expressão a ser integrada
+        lim_inf (sp.Float): Limite inferior da integral
+        lim_sup (sp.Float): Limite superior da integral
+        segments (int): Número de segmentos para a regra do trapezio múltiplo
+
+    Returns:
+        sp.Float: Integral da função f no intervalo [lim_inf, lim_sup]
+    """
     x = sp.symbols('x')
-    h = (lim_sup - lim_inf)/segments
+    h = (lim_sup - lim_inf)/n_segments
     
     # xn de cada segmento
-    segments_xn = []
-    for i in range(segments+1):
-        segments_xn.append(lim_inf + (i*h))
+    segments = []
+    for i in range(n_segments+1):
+        segments.append(lim_inf + (i*h))
     
     # Somatorio de cada segmento para f(x)
     sum = 0
-    for i in segments_xn[1:-1]:
+    for i in segments[1:-1]:
         sum += f.subs(x, i).evalf()
     
-    return (h/2)*(f.subs(x, segments_xn[0]).evalf() + (2*sum) + f.subs(x, segments_xn[-1]).evalf())
+    return (h/2)*(f.subs(x, segments[0]).evalf() + (2*sum) + f.subs(x, segments[-1]).evalf())
 
 def main():
     # Exercício 11.1

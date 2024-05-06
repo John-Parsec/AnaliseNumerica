@@ -1,6 +1,16 @@
 import sympy as sp
+from typing import TextIO
 
-def dif_dividida(pontos, indexes):
+def dif_dividida(pontos: list[sp.Point], indexes: list[int]) -> sp.Float:
+    """Calcula a diferença dividida
+
+    Args:
+        pontos (list[sp.Point]): Lista de pontos
+        indexes (list[int]): Índices dos pontos
+
+    Returns:
+        sp.Float: Diferença dividida
+    """
     n = len(indexes)
     
     if n == 2:
@@ -10,7 +20,16 @@ def dif_dividida(pontos, indexes):
     else:
         return (dif_dividida(pontos, indexes[1:])-dif_dividida(pontos, indexes[:-1]))/(pontos[indexes[n-1]].x - pontos[indexes[0]].x)
 
-def interpolacao_newton(pontos, file):
+def interpolacao_newton(pontos: list[sp.Point], file: TextIO) -> str:
+    """Interpolação de Newton
+
+    Args:
+        pontos (list[sp.Point]): Lista de pontos
+        file (TextIO): Arquivo de saída
+
+    Returns:
+        str: Polinomio interpolador
+    """
     n = len(pontos)
     difs_divididas = []
     

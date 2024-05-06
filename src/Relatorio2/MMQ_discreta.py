@@ -1,7 +1,18 @@
-import sympy as sp
 import random
+import sympy as sp
+from typing import TextIO
 
-def aproximacao_polinomial_MMQ_discreta(pontos, degree = None, file = None):
+def aproximacao_polinomial_MMQ_discreta(pontos: list[sp.Point], degree: int = None, file: TextIO = None) -> sp.Matrix:
+    """Aproximação polinomial por MMQ discreta
+
+    Args:
+        pontos (list[sp.Point]): Lista de pontos
+        degree (int, optional): Grau do polinomio. Default None.
+        file (TextIO, optional): Arquivo de saída. Default None.
+
+    Returns:
+        sp.Matrix: Vetor de coeficientes
+    """
     n = len(pontos)
     
     if degree is not None:
@@ -68,6 +79,16 @@ def aproximacao_polinomial_MMQ_discreta(pontos, degree = None, file = None):
 
 # Resolve o sistema de matrizes
 def resolve_sistema(matrizA, matrizB, matrizX):
+    """Resolve o sistema de matrizes
+
+    Args:
+        matrizA (sp.Matrix): Matriz A
+        matrizB (sp.Matrix): Matriz B
+        matrizX (sp.Matrix): Matriz X
+
+    Returns:
+        sp.Matrix: Matriz solução
+    """
     n = sp.shape(matrizA)[0]
     variaveis = sp.symbols('x0:%d' % n)
     

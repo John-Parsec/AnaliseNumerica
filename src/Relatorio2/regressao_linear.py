@@ -1,6 +1,16 @@
 import sympy as sp
+from typing import TextIO
 
-def regressao_linear(pontos, file):
+def regressao_linear(pontos: list[sp.Point], file: TextIO) -> tuple[sp.Float, sp.Float, sp.Float, sp.Float, sp.Float]:
+    """Calcula a regressão linear de uma lista de pontos
+
+    Args:
+        pontos (list[sp.Point]): Lista de pontos
+        file (TextIO): Arquivo de saída
+
+    Returns:
+        tuple[sp.Float, sp.Float, sp.Float, sp.Float, sp.Float]: a0, a1, coeficiente de determinação, coeficiente de correlação, desvio padrão
+    """
     sum_x = 0
     sum_y = 0
     sum_xy = 0

@@ -1,6 +1,19 @@
 import sympy as sp
+from typing import TextIO
 
-def simpson_3_8(f, lim_inf, lim_sup, file): 
+def simpson_3_8(f: sp.Expr, lim_inf: sp.Float, lim_sup: sp.Float, file: TextIO) -> sp.Float:
+    """Calcula a integral de uma função f no intervalo [lim_inf, lim_sup] usando a regra de Simpson 3/8
+
+    Args:
+        f (sp.Expr): Expressão a ser integrada
+        lim_inf (sp.Float): Limite inferior da integral
+        lim_sup (sp.Float): Limite superior da integral
+        file (TextIO): Arquivo de saída
+
+    Returns:
+        sp.Float: Integral da função f no intervalo [lim_inf, lim_sup]
+    """
+     
     x = sp.symbols('x')
     
     h = (lim_sup - lim_inf)/3

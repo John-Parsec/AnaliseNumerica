@@ -1,6 +1,14 @@
 import sympy as sp
 
-def interpolacao_lagrange(pontos):
+def interpolacao_lagrange(pontos: list[sp.Point]) -> sp.Expr:
+    """Interpolação de Lagrange
+
+    Args:
+        pontos (list[sp.Point]): Lista de pontos
+
+    Returns:
+        sp.Expr: Polinomio interpolador
+    """
     n = len(pontos)
     
     polinomio = 0
@@ -11,7 +19,16 @@ def interpolacao_lagrange(pontos):
     
     return sp.simplify(sp.sympify(polinomio)).evalf()
 
-def lagrange(pontos, k):
+def lagrange(pontos: list[sp.Point], k: int) -> sp.Expr:
+    """Polinomio de Lagrange
+
+    Args:
+        pontos (list[sp.Point]): Lista de pontos
+        k (int): Número do polinomio de Lagrange
+
+    Returns:
+        sp.Expr: Polinomio de Lagrange
+    """
     x = sp.symbols('x')
     
     n = len(pontos)
@@ -30,8 +47,8 @@ def main():
     output = "outputs/interpolacao_lagrange/exercicio_10.2.txt"
     
     # Exercício 10.9
-    input = "inputs/interpolacao_lagrange/exercicio_10.9.txt"
-    output = "outputs/interpolacao_lagrange/exercicio_10.9.txt"
+    # input = "inputs/interpolacao_lagrange/exercicio_10.9.txt"
+    # output = "outputs/interpolacao_lagrange/exercicio_10.9.txt"
     
     with open(input, 'r') as file:
         entrada = file.read()

@@ -1,10 +1,24 @@
+from typing import TextIO
 import sympy as sp
 from sympy.integrals.quadrature import gauss_legendre
 
-def quadratura_gauss(f, lim_inf, lim_sup, pontos, file):
+def quadratura_gauss(f: sp.Expr, lim_inf: sp.Float, lim_sup: sp.Float, n_pontos: int, file: TextIO) -> sp.Float:
+    """Calcula a integral de uma função f no intervalo [lim_inf, lim_sup] usando a quadratura de Gauss
+
+    Args:
+        f (sp.Expr): Expressão a ser integrada
+        lim_inf (sp.Float): Limite inferior da integral
+        lim_sup (sp.Float): Limite superior da integral
+        pontos (int): Número de pontos para a quadratura de Gauss
+        file (TextIO): Arquivo de saída
+
+    Returns:
+        sp.Float: Integral da função f no intervalo [lim_inf, lim_sup]
+    """
+    
     x = sp.symbols('x')
     
-    xn, wn = gauss_legendre(pontos, 5)
+    xn, wn = gauss_legendre(n_pontos, 5)
     
     # Novos valores de x e dx para a integral
     xd = ( (lim_sup + lim_inf) + (lim_sup - lim_inf) * x)/ 2
@@ -50,11 +64,11 @@ def main():
     f = sp.simplify(entrada[0])
     lim_inf = sp.sympify(entrada[1]).evalf()
     lim_sup = sp.sympify(entrada[2]).evalf()
-    pontos = int(entrada[3])
+    n_pontos = int(entrada[3])
     
     with open(output, 'w') as out_file:
-        integral = quadratura_gauss(f, lim_inf, lim_sup, pontos, out_file)
-        out_file.write(f"\nIntegral por quadratura de Gauss - {pontos} pontos: {integral}\n")
+        integral = quadratura_gauss(f, lim_inf, lim_sup, n_pontos, out_file)
+        out_file.write(f"\nIntegral por quadratura de Gauss - {n_pontos} pontos: {integral}\n")
         
 if __name__ == "__main__":
     main()

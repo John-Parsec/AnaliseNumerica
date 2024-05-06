@@ -1,12 +1,23 @@
 import sympy as sp
 
-def simpson_mult(f, lim_inf, lim_sup, segments):
+def simpson_mult(f: sp.Expr, lim_inf: sp.Float, lim_sup: sp.Float, n_segments: int) -> sp.Float:
+    """Calcula a integral de uma função f no intervalo [lim_inf, lim_sup] usando a regra de Simpson 1/3 múltipla
+
+    Args:
+        f (sp.Expr): Expressão a ser integrada
+        lim_inf (sp.Float): Limite inferior da integral
+        lim_sup (sp.Float): Limite superior da integral
+        segments (int): Número de segmentos
+
+    Returns:
+        sp.Float: Integral da função f no intervalo [lim_inf, lim_sup]
+    """
     x = sp.symbols('x')
-    h = (lim_sup - lim_inf)/segments
+    h = (lim_sup - lim_inf)/n_segments
     
     # xn de cada segmento
     segments_xn = []
-    for i in range(segments+1):
+    for i in range(n_segments+1):
         segments_xn.append(lim_inf + (i*h))
     
     # Somatorio de cada segmento para f(x) par
@@ -21,7 +32,17 @@ def simpson_mult(f, lim_inf, lim_sup, segments):
     
     return (h/3)*(f.subs(x, segments_xn[0]).evalf() + (4*sum_impar) + (2*sum_par) + f.subs(x, segments_xn[-1]).evalf())
 
-def simpson_1_3(f, lim_inf, lim_sup):
+def simpson_1_3(f: sp.Expr, lim_inf: sp.Float, lim_sup: sp.Float) -> sp.Float:
+    """Calcula a integral de uma função f no intervalo [lim_inf, lim_sup] usando a regra de Simpson 1/3
+
+    Args:
+        f (sp.Expr): Expressão a ser integrada
+        lim_inf (sp.Float): Limite inferior da integral
+        lim_sup (sp.Float): Limite superior da integral
+
+    Returns:
+        sp.Float: Integral da função f no intervalo [lim_inf, lim_sup]
+    """
     x = sp.symbols('x')
     mean = (lim_inf + lim_sup)/2
     
@@ -65,8 +86,6 @@ def main():
         
         out_file.write(f"Integral simples por Simpson 1/3: {integral_simples}\n")
         out_file.write(f"Integral múltipla por Simpson 1/3: {integral_mult}\n")
-        
-        
 
 if __name__ == "__main__":
     main()

@@ -1,7 +1,20 @@
 import sympy as sp
+from typing import TextIO
 from MMQ_discreta import aproximacao_polinomial_MMQ_discreta
 
-def aproximacao_polinomial_MMQ_continua(f, degree, lim_inf, lim_sup, file):
+def aproximacao_polinomial_MMQ_continua(f: sp.Expr, degree: int, lim_inf: sp.Float, lim_sup: sp.Float, file: TextIO) -> sp.Matrix:
+    """Aproximação polinomial de f(x) por MMQ contínua
+
+    Args:
+        f (sp.Expr): Função a ser aproximada
+        degree (int): Grau do polinomio
+        lim_inf (sp.Float): Limite inferior
+        lim_sup (sp.Float): Limite superior
+        file (TextIO): Arquivo de saída
+
+    Returns:
+        sp.Matrix: Vetor de coeficientes
+    """
     x = sp.symbols('x')
     mat_X = sp.zeros(degree + 1, degree + 1)
     vet_fx = sp.zeros(degree + 1, 1)
@@ -25,7 +38,17 @@ def aproximacao_polinomial_MMQ_continua(f, degree, lim_inf, lim_sup, file):
     return resolve_sistema(mat_X, vet_fx, vet_A)
 
 # Resolve o sistema de matrizes
-def resolve_sistema(matrizA, matrizB, matrizX):
+def resolve_sistema(matrizA: sp.Matrix, matrizB: sp.Matrix, matrizX: sp.Matrix) -> sp.Matrix:
+    """Resolve o sistema de matrizes
+
+    Args:
+        matrizA (sp.Matrix): Matriz A
+        matrizB (sp.Matrix): Matriz B
+        matrizX (sp.Matrix): Matriz X
+
+    Returns:
+        sp.Matrix: Matriz solução
+    """
     n = sp.shape(matrizA)[0]
     variaveis = sp.symbols('x0:%d' % n)
     
@@ -38,7 +61,16 @@ def resolve_sistema(matrizA, matrizB, matrizX):
     return matriz_solucao
 
 # Cria o polinomio a partir do vetor de coeficientes
-def cria_polinomio(vet_a, var):
+def cria_polinomio(vet_a: sp.Matrix, var: sp.Symbol) -> sp.Expr:
+    """Cria o polinomio a partir do vetor de coeficientes
+
+    Args:
+        vet_a (sp.Matrix): Vetor de coeficientes
+        var (sp.Symbol): Variável
+
+    Returns:
+        sp.Expr: Polinomio
+    """
     n = len(vet_a)
     
     polinomio = ""

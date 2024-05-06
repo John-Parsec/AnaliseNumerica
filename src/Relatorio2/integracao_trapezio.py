@@ -1,23 +1,44 @@
 import sympy as sp
 
 # Calcula a integral de f(x) no intervalo [lim_inf, lim_sup] com n segmentos
-def trapezio_mult(f, lim_inf, lim_sup, segments): 
+def trapezio_mult(f: sp.Expr, lim_inf: sp.Float, lim_sup: sp.Float, n_segments: int) -> sp.Float:
+    """Calcula a integral de uma função f no intervalo [lim_inf, lim_sup] usando a regra do trapezio múltiplo
+
+    Args:
+        f (sp.Expr): Expressão a ser integrada
+        lim_inf (sp.Float): Limite inferior da integral
+        lim_sup (sp.Float): Limite superior da integral
+        segments (int): Número de segmentos para a regra do trapezio múltiplo
+
+    Returns:
+        sp.Float: Integral da função f no intervalo [lim_inf, lim_sup]
+    """
     x = sp.symbols('x')
-    h = (lim_sup - lim_inf)/segments
+    h = (lim_sup - lim_inf)/n_segments
     
     # xn de cada segmento
-    segments_xn = []
-    for i in range(segments+1):
-        segments_xn.append(lim_inf + (i*h))
+    segments = []
+    for i in range(n_segments+1):
+        segments.append(lim_inf + (i*h))
     
     # Somatorio de cada segmento para f(x)
     sum = 0
-    for i in segments_xn[1:-1]:
+    for i in segments[1:-1]:
         sum += f.subs(x, i).evalf()
     
-    return (h/2)*(f.subs(x, segments_xn[0]).evalf() + (2*sum) + f.subs(x, segments_xn[-1]).evalf())
+    return (h/2)*(f.subs(x, segments[0]).evalf() + (2*sum) + f.subs(x, segments[-1]).evalf())
 
-def trapezio_simples(f, lim_inf, lim_sup):
+def trapezio_simples(f: sp.Expr, lim_inf: sp.Float, lim_sup: sp.Float) -> sp.Float:
+    """Calcula a integral de f(x) no intervalo [lim_inf, lim_sup] com um segmento
+
+    Args:
+        f (sp.Expr): Expressão a ser integrada
+        lim_inf (sp.Float): Limite inferior da integral
+        lim_sup (sp.Float): Limite superior da integral
+
+    Returns:
+        sp.Float: Integral da função f no intervalo [lim_inf, lim_sup]
+    """
     x = sp.symbols('x')
     
     # (b - a)*(f(a) + f(b))/2
