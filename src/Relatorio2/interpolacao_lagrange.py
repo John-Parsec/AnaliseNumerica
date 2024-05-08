@@ -1,4 +1,5 @@
 import sympy as sp
+from testes import verifica_polinomio
 
 def interpolacao_lagrange(pontos: list[sp.Point]) -> sp.Expr:
     """Interpolação de Lagrange
@@ -47,8 +48,8 @@ def main():
     output = "outputs/interpolacao_lagrange/exercicio_10.2.txt"
     
     # Exercício 10.9
-    # input = "inputs/interpolacao_lagrange/exercicio_10.9.txt"
-    # output = "outputs/interpolacao_lagrange/exercicio_10.9.txt"
+    input = "inputs/interpolacao_lagrange/exercicio_10.9.txt"
+    output = "outputs/interpolacao_lagrange/exercicio_10.9.txt"
     
     with open(input, 'r') as file:
         entrada = file.read()
@@ -66,9 +67,14 @@ def main():
         pontos.append(sp.Point(float(coord[0]), float(coord[1])))
     
     with open(output, 'w') as out_file:
-        polinimio = interpolacao_lagrange(pontos)
+        polinomio = interpolacao_lagrange(pontos)
         
-        out_file.write(f"f(x) = {polinimio}\n")
+        out_file.write(f"f(x) = {polinomio}\n")
+        
+        if verifica_polinomio(polinomio, pontos, out_file):
+            out_file.write(f"\nO polinomio passa por todos os pontos!")
+        else:
+            out_file.write(f"\nO polinomio não passa por todos os pontos! :(")
 
 if __name__ == "__main__":
     main()

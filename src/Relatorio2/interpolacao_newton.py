@@ -1,5 +1,6 @@
 import sympy as sp
 from typing import TextIO
+from testes import verifica_polinomio
 
 def dif_dividida(pontos: list[sp.Point], indexes: list[int]) -> sp.Float:
     """Calcula a diferença dividida
@@ -20,15 +21,14 @@ def dif_dividida(pontos: list[sp.Point], indexes: list[int]) -> sp.Float:
     else:
         return (dif_dividida(pontos, indexes[1:])-dif_dividida(pontos, indexes[:-1]))/(pontos[indexes[n-1]].x - pontos[indexes[0]].x)
 
-def interpolacao_newton(pontos: list[sp.Point], file: TextIO) -> str:
+def interpolacao_newton(pontos: list[sp.Point]) -> sp.Expr:
     """Interpolação de Newton
 
     Args:
         pontos (list[sp.Point]): Lista de pontos
-        file (TextIO): Arquivo de saída
 
     Returns:
-        str: Polinomio interpolador
+        sp.Expr: Polinomio interpolador
     """
     n = len(pontos)
     difs_divididas = []
@@ -36,10 +36,8 @@ def interpolacao_newton(pontos: list[sp.Point], file: TextIO) -> str:
     indexes = []
     for i in range(n):
         indexes.insert(0, i) 
-        dif = dif_dividida(pontos, indexes)
         
-        file.write(f"f({pontos[i].x}) = {float(dif)}\n")
-        difs_divididas.append(dif)
+        difs_divididas.append(dif_dividida(pontos, indexes))
     
     polinomio = ""
     
@@ -58,7 +56,7 @@ def interpolacao_newton(pontos: list[sp.Point], file: TextIO) -> str:
     
     polinomio = sp.sympify(polinomio)
     
-    return str(polinomio)
+    return polinomio
 
 def main():
     # Exercício 11.1    
@@ -85,9 +83,14 @@ def main():
         pontos.append(sp.Point(float(coord[0]), float(coord[1])))
     
     with open(output, 'w') as out_file:
-        polinimio = interpolacao_newton(pontos, out_file)
+        polinomio = interpolacao_newton(pontos)
         
-        out_file.write(f"\nf(x) = {polinimio}\n")
+        out_file.write(f"f(x) = {polinomio}\n")
+        
+        if verifica_polinomio(polinomio, pontos, out_file):
+            out_file.write(f"\nO polinomio passa por todos os pontos!")
+        else:
+            out_file.write(f"\nO polinomio não passa por todos os pontos! :(")
 
 if __name__ == "__main__":
     main()

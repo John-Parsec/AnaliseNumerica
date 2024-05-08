@@ -1,5 +1,6 @@
-f(0) = 0.0
-f(10) = 0.6
-f(20) = -0.04
-
 f(x) = -0.04*x*(x - 10) + 0.6*x
+
+f(0.0) = 0.0
+f(10.0) = 6.0
+f(20.0) = 4.0
+O polinomio passa por todos os pontos!

@@ -136,7 +136,7 @@ def main():
         
         out_file.write(f"\n")
         
-        # polinimo
+        # polinomio
         for i in range(size):
             if i == size-1:
                 out_file.write(f"{coeficiente_a[i, 0]}x^{i})\n\n")

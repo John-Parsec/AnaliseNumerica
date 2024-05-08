@@ -141,7 +141,7 @@ def main():
         coeficiente_a = aproximacao_polinomial_MMQ_discreta(pontos, degree, out_file)
         size = len(coeficiente_a)
         
-        # polinimo
+        # polinomio
         for i in range(size):
             if i == size-1:
                 out_file.write(f"{coeficiente_a[i, 0]}x^{i})\n\n")
