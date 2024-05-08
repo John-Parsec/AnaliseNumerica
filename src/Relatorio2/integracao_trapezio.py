@@ -70,11 +70,11 @@ def main():
     f = sp.simplify(entrada[0])
     lim_inf = sp.sympify(entrada[1]).evalf()
     lim_sup = sp.sympify(entrada[2]).evalf()
-    divs = int(entrada[3])
+    n_pontos = int(entrada[3])
     
     with open(output, 'w') as out_file:
         integral_simples = trapezio_simples(f, lim_inf, lim_sup)
-        integral_mult = trapezio_mult(f, lim_inf, lim_sup, divs)
+        integral_mult = trapezio_mult(f, lim_inf, lim_sup, n_pontos)
         
         # Testando se o resultado da integral simples está correto
         out_file.write(f"Integral Simples\n")

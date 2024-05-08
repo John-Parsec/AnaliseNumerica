@@ -123,7 +123,14 @@ def main():
         return
     
     entrada = entrada.split('\n')
+    
+    if len(entrada[0].split(' ')[0]) == 1:
+        degree = int(entrada[0])
+    else:
+        degree = None
         
+    entrada = entrada[1:]
+    
     pontos = []
     for i in entrada:
         coord = i.split(' ')
@@ -131,7 +138,7 @@ def main():
     
     
     with open(output, 'w') as out_file:
-        coeficiente_a = aproximacao_polinomial_MMQ_discreta(pontos, 2, out_file)
+        coeficiente_a = aproximacao_polinomial_MMQ_discreta(pontos, degree, out_file)
         size = len(coeficiente_a)
         
         # polinimo

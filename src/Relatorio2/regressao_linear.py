@@ -102,9 +102,9 @@ def main():
     pontos = []
     
     for i in entrada:
-        coordenadas = i.split(' ')
+        coord = i.split(' ')
         
-        pontos.append(sp.Point(float(coordenadas[0]), float(coordenadas[1])))    
+        pontos.append(sp.Point(float(coord[0]), float(coord[1])))    
     
     with open(output, 'w') as out_file:
         a0, a1, coef_determinacao, coef_correlacao, desvio_padrao = regressao_linear(pontos, out_file)

@@ -8,7 +8,7 @@ def simpson_mult(f: sp.Expr, lim_inf: sp.Float, lim_sup: sp.Float, n_segments: i
         f (sp.Expr): Expressão a ser integrada
         lim_inf (sp.Float): Limite inferior da integral
         lim_sup (sp.Float): Limite superior da integral
-        segments (int): Número de segmentos
+        segments (int): Número de segmentos para a regra de Simpson 1/3 múltipla
 
     Returns:
         sp.Float: Integral da função f no intervalo [lim_inf, lim_sup]
@@ -79,11 +79,11 @@ def main():
     f = sp.sympify(entrada[0])
     lim_inf = sp.sympify(entrada[1]).evalf()
     lim_sup = sp.sympify(entrada[2]).evalf()
-    divs = int(entrada[3])
+    n_pontos = int(entrada[3])
     
     with open(output, 'w') as out_file:
         integral_simples = simpson_1_3(f, lim_inf, lim_sup)
-        integral_mult = simpson_mult(f, lim_inf, lim_sup, divs)
+        integral_mult = simpson_mult(f, lim_inf, lim_sup, n_pontos)
         
         # Testando se o resultado da integral simples está correto
         out_file.write(f"Integral Simples\n")
