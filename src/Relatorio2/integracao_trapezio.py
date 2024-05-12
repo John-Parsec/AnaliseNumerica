@@ -81,8 +81,8 @@ def main():
         verifica_integral(f, integral_simples, lim_inf, lim_sup, out_file)
         
         # Testando se o resultado da integral multipla está correto        
-        out_file.write(f"Integral Simples\n")
-        verifica_integral(f, integral_simples, lim_inf, lim_sup, out_file)
+        out_file.write(f"Integral Multiplo\n")
+        verifica_integral(f, integral_mult, lim_inf, lim_sup, out_file)
         
         out_file.write(f"Integral simples: " + str(integral_simples) + "")
         out_file.write(f"\nIntegral múltipla: " + str(integral_mult) + "")

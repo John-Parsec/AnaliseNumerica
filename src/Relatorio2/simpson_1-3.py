@@ -60,12 +60,12 @@ def main():
     output = "outputs/simpson_1-3/exercicio_11.1.txt"
     
     # Exercício 11.6
-    #input = "inputs/simpson_1-3/exercicio_11.6.txt"
-    #output = "outputs/simpson_1-3/exercicio_11.6.txt"
+    # input = "inputs/simpson_1-3/exercicio_11.6.txt"
+    # output = "outputs/simpson_1-3/exercicio_11.6.txt"
     
     # Exercício 11.11
-    #input = "inputs/simpson_1-3/exercicio_11.11.txt"
-    #output = "outputs/simpson_1-3/exercicio_11.11.txt" 
+    # input = "inputs/simpson_1-3/exercicio_11.11.txt"
+    # output = "outputs/simpson_1-3/exercicio_11.11.txt" 
     
     with open(input, 'r') as file:
         entrada = file.read()
@@ -90,8 +90,8 @@ def main():
         verifica_integral(f, integral_simples, lim_inf, lim_sup, out_file)
         
         # Testando se o resultado da integral multipla está correto        
-        out_file.write(f"Integral Simples\n")
-        verifica_integral(f, integral_simples, lim_inf, lim_sup, out_file)
+        out_file.write(f"Integral Multiplo\n")
+        verifica_integral(f, integral_mult, lim_inf, lim_sup, out_file)
         
         out_file.write(f"Integral simples por Simpson 1/3: {integral_simples}\n")
         out_file.write(f"Integral múltipla por Simpson 1/3: {integral_mult}\n")

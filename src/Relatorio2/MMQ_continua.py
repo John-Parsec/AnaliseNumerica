@@ -134,16 +134,14 @@ def main():
         coeficiente_a = aproximacao_polinomial_MMQ_continua(f, degree, lim_inf, lim_sup, out_file)
         size = len(coeficiente_a)
         
-        out_file.write(f"\n")
-        
         # polinomio
         for i in range(size):
             if i == size-1:
-                out_file.write(f"{coeficiente_a[i, 0]}x^{i})\n\n")
+                out_file.write(f"\n{coeficiente_a[i, 0]}x^{i})\n\n")
             elif i == 0:
-                out_file.write(f"f(x) = {coeficiente_a[i, 0]} + (")
+                out_file.write(f"\nf(x) = {coeficiente_a[i, 0]} + (")
             else:
-                out_file.write(f"{coeficiente_a[i, 0]}x^{i}) + (")
+                out_file.write(f"\n{coeficiente_a[i, 0]}x^{i}) + (")
         
         # coeficientes
         for i in range(size):

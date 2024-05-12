@@ -3,10 +3,10 @@ Resultado da integral pela Quadratura Adaptativa de Gauss-Kronrod: 199056824157.
 Erro pela Quadratura Adaptativa de Gauss-Kronrod: 0.0022099746938869526
 Erro relativo entre meu resultado e o da Quadratura Adaptativa de Gauss-Kronrod: 0.387277467722475
 
-Integral Simples
+Integral Multiplo
 Resultado da integral pela Quadratura Adaptativa de Gauss-Kronrod: 199056824157.75012
 Erro pela Quadratura Adaptativa de Gauss-Kronrod: 0.0022099746938869526
-Erro relativo entre meu resultado e o da Quadratura Adaptativa de Gauss-Kronrod: 0.387277467722475
+Erro relativo entre meu resultado e o da Quadratura Adaptativa de Gauss-Kronrod: 0.0353897110636320
 
 Integral simples: 324872701217.376
 Integral múltipla: 206359839243.723
