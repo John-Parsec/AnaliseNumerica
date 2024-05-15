@@ -1,5 +1,6 @@
 import sympy as sp
 from typing import TextIO
+from testes import plot_regresao_linear
 
 def regressao_linear(pontos: list[sp.Point], file: TextIO) -> tuple[sp.Float, sp.Float, sp.Float, sp.Float, sp.Float]:
     """Calcula a regressão linear de uma lista de pontos
@@ -116,6 +117,8 @@ def main():
         out_file.write(f"r^2 = {coef_determinacao}\n")
         out_file.write(f"r = {coef_correlacao}\n")
         out_file.write(f"S(x/y) = {desvio_padrao}")
+        
+        plot_regresao_linear(a0, a1, pontos)
 
 if __name__ == "__main__":
     main()

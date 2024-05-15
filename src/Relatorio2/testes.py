@@ -1,5 +1,7 @@
 import sympy as sp
 from scipy.integrate import quad
+import numpy as np
+import matplotlib.pyplot as plt
 
 def verifica_integral(f, integral, lim_inf, lim_sup, file = None):
     x = sp.symbols('x')
@@ -31,3 +33,16 @@ def verifica_polinomio(polinomio, pontos, file = None):
             verify = False
     
     return verify
+
+def plot_regresao_linear(a0, a1, pontos):
+    x = np.array([i.x for i in pontos])
+    y = np.array([i.y for i in pontos])
+    
+    plt.plot(x, y, 'o')
+    plt.plot(x, a0 + a1*x)
+    plt.xlabel('Ano')
+    plt.ylabel('Valores')
+    plt.title('Regressão Linear')
+    plt.show()
+    
+    return None

@@ -1,5 +1,4 @@
 import sympy as sp
-from typing import TextIO
 from testes import verifica_polinomio
 
 def dif_dividida(pontos: list[sp.Point], indexes: list[int]) -> sp.Float:
