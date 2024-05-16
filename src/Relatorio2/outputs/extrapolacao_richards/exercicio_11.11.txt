@@ -1,0 +1,10 @@
+h1 = 0.000180000000000007
+h2 = 0.0000900000000000034
+
+Resultado da integral pela Quadratura Adaptativa de Gauss-Kronrod: 1.1152089709758881
+Erro pela Quadratura Adaptativa de Gauss-Kronrod: 1.238130676845959e-14
+Erro relativo entre meu resultado e o da Quadratura Adaptativa de Gauss-Kronrod: 9.44622785626337E-9
+
+I(0.000180000000000007) = 1.11552161125404
+I(0.0000900000000000034) = 1.11528713894631
+Integral: 1.11520898151041
