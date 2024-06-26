@@ -1,6 +1,6 @@
 import sympy as sp
 
-def runge_kutta(expressao, h, a, b, y0):
+def runge_kutta(f, h, a, b, y0):
     x = sp.Symbol('x')
     y = sp.Symbol('y')
 
@@ -14,10 +14,10 @@ def runge_kutta(expressao, h, a, b, y0):
     # calcula os valores de x e y para cada iteração
     while xi < b:
         meioh = h/2
-        k1 = expressao.subs(x, xi).subs(y, yi).evalf()
-        k2 = expressao.subs(x, xi + meioh).subs(y, yi + (meioh*k1)).evalf()
-        k3 = expressao.subs(x, xi + meioh).subs(y, yi + meioh*k2).evalf()
-        k4 = expressao.subs(x, xi + h).subs(y, yi + h*k3).evalf()
+        k1 = f.subs(x, xi).subs(y, yi).evalf()
+        k2 = f.subs(x, xi + meioh).subs(y, yi + (meioh*k1)).evalf()
+        k3 = f.subs(x, xi + meioh).subs(y, yi + meioh*k2).evalf()
+        k4 = f.subs(x, xi + h).subs(y, yi + h*k3).evalf()
         yi = yi + (k1 + 2*k2+2*k3+k4)*(h/6)
         xi += h
         results.append((xi, yi))
