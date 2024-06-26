@@ -1,6 +1,18 @@
 import sympy as sp
 
-def ralston(f, h, a, b, y0):
+def ralston(f: sp.Expr, h: float, a: float, b: float, y0: float) -> list[(float, float)]:
+    """Calcula a solução de uma equação diferencial ordinária de primeira ordem pelo método de Ralston.
+
+    Args:
+        f (sp.Expr): Expressão da função f(x, y)
+        h (float): Tamanho do passo
+        a (float): Limite inferior do intervalo
+        b (float): Limite superior do intervalo
+        y0 (float): Valor inicial de y
+
+    Returns:
+        list[(float, float)]: Lista de tuplas (x, y) com os valores de x e y para cada iteração
+    """
     x = sp.Symbol('x')
     y = sp.Symbol('y')
 

@@ -1,6 +1,18 @@
 import sympy as sp
 
-def heun(expressao, h, a, b, y0):
+def heun(f: sp.Expr, h: float, a: float, b: float, y0: float) -> list[(float, float)]:
+    """Calcula a solução de uma equação diferencial ordinária de primeira ordem pelo método de Heun.
+
+    Args:
+        f (sp.Expr): Expressão da função f(x, y)
+        h (float): Tamanho do passo
+        a (float): Limite inferior do intervalo
+        b (float): Limite superior do intervalo
+        y0 (float): Valor inicial de y
+
+    Returns:
+        list[(float, float)]: Lista de tuplas (x, y) com os valores de x e y para cada iteração
+    """
     x = sp.Symbol('x')
     y = sp.Symbol('y')
 
@@ -13,8 +25,8 @@ def heun(expressao, h, a, b, y0):
     
     # calcula os valores de x e y para cada iteração
     while xi < b:
-        k = expressao.subs(x, xi).subs(y, yi).evalf()
-        k1 = expressao.subs(x, xi + h).subs(y, yi + k*h).evalf()
+        k = f.subs(x, xi).subs(y, yi).evalf()
+        k1 = f.subs(x, xi + h).subs(y, yi + k*h).evalf()
         yi = yi + (k + k1)*(h/2)
         xi += h
         results.append((xi, yi))
