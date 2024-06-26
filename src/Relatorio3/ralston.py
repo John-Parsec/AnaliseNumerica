@@ -1,9 +1,9 @@
 import sympy as sp
 
-def euler(f, h, a, b, y0):
+def ralston(f, h, a, b, y0):
     x = sp.Symbol('x')
     y = sp.Symbol('y')
-    
+
     results = []
     
     # adiciona o primeiro valor
@@ -13,29 +13,30 @@ def euler(f, h, a, b, y0):
     
     # calcula os valores de x e y para cada iteração
     while xi < b:
-        yi = (yi + f.subs(x, xi).subs(y, yi)*h).evalf()
+        k1 = f.subs(x, xi).subs(y, yi).evalf()
+        k2 = f.subs(x, xi + (h*3/4)).subs(y, yi + (k1*h*3/4)).evalf()
+        yi = yi + (k1/3 + (k2*2/3))*(h)
         xi += h
-        
         results.append((xi, yi))
     
     return results
 
 def main():
     # Exercício 12.3
-    input = "inputs/euler/exercicio_12.3.txt"
-    output = "outputs/euler/exercicio_12.3.txt"
+    input = "inputs/ralston/exercicio_12.3.txt"
+    output = "outputs/ralston/exercicio_12.3.txt"
     
     # Exercício 12.10
-    # input = "inputs/euler/exercicio_12.10.txt"
-    # output = "outputs/euler/exercicio_12.10.txt"
+    # input = "inputs/ralston/exercicio_12.10.txt"
+    # output = "outputs/ralston/exercicio_12.10.txt"
     
     # Exercício 12.16.1
-    # input = "inputs/euler/exercicio_12.16_1.txt"
-    # output = "outputs/euler/exercicio_12.16_1.txt"
+    # input = "inputs/ralston/exercicio_12.16_1.txt"
+    # output = "outputs/ralston/exercicio_12.16_1.txt"
     
     # Exercício 12.16.2
-    # input = "inputs/euler/exercicio_12.16_2.txt"
-    # output = "outputs/euler/exercicio_12.16_2.txt" 
+    # input = "inputs/ralston/exercicio_12.16_2.txt"
+    # output = "outputs/ralston/exercicio_12.16_2.txt" 
         
     with open(input, 'r') as file:
         entrada = file.read()
@@ -64,9 +65,9 @@ def main():
     valor_inicial = float(entrada[3])
     
     with open(output, 'w') as out_file:    
-        results = euler(f, amplitude, limite_inf, limite_sup, valor_inicial)
+        results = ralston(f, amplitude, limite_inf, limite_sup, valor_inicial)
         
-        out_file.write(f"Resultado do metodo de Euler:\n[\n")
+        out_file.write(f"Resultado do metodo de Ralston:\n[\n")
         for i in range(len(results)):
             out_file.write(f"  {i}({results[i][0]:.5f}, {results[i][1]:.5f})")
             if i == len(results) - 1:
