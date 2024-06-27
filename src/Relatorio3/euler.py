@@ -1,4 +1,5 @@
 import sympy as sp
+from plot import plot
 
 def euler(f: sp.Expr, h: float, a: float, b: float, y0: float) -> list[(float, float)]:
     """Calcula a solução de uma equação diferencial ordinária de primeira ordem pelo método de Euler.
@@ -46,8 +47,8 @@ def main():
     # output = "outputs/euler/exercicio_12.16_1.txt"
     
     # Exercício 12.16.2
-    # input = "inputs/euler/exercicio_12.16_2.txt"
-    # output = "outputs/euler/exercicio_12.16_2.txt" 
+    input = "inputs/euler/exercicio_12.16_2.txt"
+    output = "outputs/euler/exercicio_12.16_2.txt" 
         
     with open(input, 'r') as file:
         entrada = file.read()
@@ -87,6 +88,9 @@ def main():
                 out_file.write(f",")
             if (i + 1) % 4 == 0:
                 out_file.write("\n")
+                
+    # plota e salva o gráfico dos resultados
+    # plot(results, output.replace('.txt', '.png'), 'Método de Euler')
 
 if __name__ == "__main__":
     main()

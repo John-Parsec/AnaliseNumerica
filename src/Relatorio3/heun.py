@@ -1,4 +1,5 @@
 import sympy as sp
+from plot import plot
 
 def heun(f: sp.Expr, h: float, a: float, b: float, y0: float) -> list[(float, float)]:
     """Calcula a solução de uma equação diferencial ordinária de primeira ordem pelo método de Heun.
@@ -79,7 +80,7 @@ def main():
     with open(output, 'w') as out_file:    
         results = heun(f, amplitude, limite_inf, limite_sup, valor_inicial)
         
-        out_file.write(f"Resultsado do metodo de Heun:\n[\n")
+        out_file.write(f"Resultado do metodo de Heun:\n[\n")
         for i in range(len(results)):
             out_file.write(f"  {i}({results[i][0]:.5f}, {results[i][1]:.5f})")
             if i == len(results) - 1:
@@ -89,6 +90,8 @@ def main():
             if (i + 1) % 4 == 0:
                 out_file.write("\n")
 
+    # plota e salva o gráfico dos resultados
+    # plot(results, output.replace('.txt', '.png'), 'Método de Heun')
 
 if __name__ == "__main__":
     main()
