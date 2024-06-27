@@ -1,19 +1,7 @@
 import sympy as sp
 from plot import plot
 
-def euler_modificado(f: sp.Expr, h: float, a: float, b: float, y0: float) -> list[(float, float)]:
-    """Calcula a solução de uma equação diferencial ordinária de primeira ordem pelo método de Euler Modificado.
-
-    Args:
-        f (sp.Expr): Expressão da função f(x, y)
-        h (float): Tamanho do passo
-        a (float): Limite inferior do intervalo
-        b (float): Limite superior do intervalo
-        y0 (float): Valor inicial de y
-
-    Returns:
-        list[(float, float)]: Lista de tuplas (x, y) com os valores de x e y para cada iteração
-    """
+def euler_modificado(f, h, a, b, y0):
     x = sp.Symbol('x')
     y = sp.Symbol('y')
     yi_2 = sp.Symbol('y')
@@ -28,8 +16,8 @@ def euler_modificado(f: sp.Expr, h: float, a: float, b: float, y0: float) -> lis
     # calcula os valores de x e y para cada iteração
     while xi < b:
         yi_2 = (yi + f.subs(x, xi).subs(y, yi)*h/2)
-        f = f.subs(x, xi + h/2).subs(y, yi_2)
-        yi = (yi + f*h).evalf()
+        f_ = f.subs(x, xi + h/2).subs(y, yi_2)
+        yi = (yi + f_*h).evalf()
         xi += h
         results.append((xi, yi))
     
@@ -88,11 +76,11 @@ def main():
                 out_file.write(f"\n]")
             else:
                 out_file.write(f",")
-            if (i + 1) % 4 == 0:
+            if (i + 1) % 3 == 0:
                 out_file.write("\n")
     
     # plota e salva o gráfico dos resultados
-    # plot(results, output.replace('.txt', '.png'), 'Método de Euler Modificado')
+    plot(results, output.replace('.txt', '.png'), 'Método de Euler Modificado')
 
 if __name__ == "__main__":
     main()
