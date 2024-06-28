@@ -4,25 +4,15 @@ from euler import euler
 from euler_modificado import euler_modificado
 from heun import heun
 from ralston import ralston
-from runge_kutta import runge_kutta
+from runge_kutta import runge_kutta_terceira_ordem, runge_kutta_quarta_ordem
 
 def plot_all(data: list[(float, float)], output: str, labels: list):
     fig, ax = plt.subplots(figsize=(10, 6))
+    colors = ['blue', 'orange', 'green', 'red', 'purple', 'brown']
     
-    x, y = zip(*data[0])
-    ax.plot(x, y, label=labels[0])
-    
-    x, y = zip(*data[1])
-    ax.plot(x, y, label=labels[1], color='orange')
-    
-    x, y = zip(*data[2])
-    ax.plot(x, y, label=labels[2], color='green')
-    
-    x, y = zip(*data[3])
-    ax.plot(x, y, label=labels[3], color='red')
-    
-    x, y = zip(*data[4])
-    ax.plot(x, y, label=labels[4], color='purple')
+    for i in range(6):
+        x, y = zip(*data[i])
+        ax.plot(x, y, label=labels[i], color=colors[i])
     
     ax.set_xlabel('x')
     ax.set_ylabel('y')
@@ -33,42 +23,16 @@ def plot_all(data: list[(float, float)], output: str, labels: list):
 
 def plot_all_side(data: list[(float, float)], output: str, labels: list[str]):
     fig, ax = plt.subplots(2, 3, figsize=(10, 6), sharey=True)
+    colors = ['blue', 'orange', 'green', 'red', 'purple', 'brown']
     
-    x, y = zip(*data[0])
-    ax[0, 0].plot(x, y, label=labels[0])
-    ax[0, 0].set_title('Método de Euler')
-    ax[0, 0].set_xlabel('x')
-    ax[0, 0].set_ylabel('y')
-    ax[0, 0].grid(True)
+    for i in range(len(data)):
+        x, y = zip(*data[i])
+        ax[i // 3, i % 3].plot(x, y, label=labels[i], color=colors[i])
+        ax[i // 3, i % 3].set_title(f'Método de {labels[i]}')
+        ax[i // 3, i % 3].set_xlabel('x')
+        ax[i // 3, i % 3].grid(True)
     
-    x, y = zip(*data[1])
-    ax[0, 1].plot(x, y, label=labels[1], color='orange')
-    ax[0, 1].set_title('Método de Euler Modificado')
-    ax[0, 1].set_xlabel('x')
-    ax[0, 1].grid(True)
-    
-    x, y = zip(*data[2])
-    ax[0, 2].plot(x, y, label=labels[2], color='green')
-    ax[0, 2].set_title('Método de Heun')
-    ax[0, 2].set_xlabel('x')
-    ax[0, 2].grid(True)
-    
-    x, y = zip(*data[3])
-    ax[1, 0].plot(x, y, label=labels[3], color='red')
-    ax[1, 0].set_title('Método de Ralston')
-    ax[1, 0].set_xlabel('x')
-    ax[1, 0].set_ylabel('y')
-    ax[1, 0].grid(True)
-    
-    x, y = zip(*data[4])
-    ax[1, 1].plot(x, y, label=labels[4])
-    ax[1, 1].set_title('Método de Runge-Kutta', color='purple')
-    ax[1, 1].set_xlabel('x')
-    ax[1, 1].grid(True)
-    
-    ax[1, 2].axis('off')
     fig.tight_layout()
-    
     
     plt.savefig(output)
 
@@ -92,7 +56,8 @@ results.append(euler(f, amplitude, limite_inf, limite_sup, valor_inicial))
 results.append(euler_modificado(f, amplitude, limite_inf, limite_sup, valor_inicial))
 results.append(heun(f, amplitude, limite_inf, limite_sup, valor_inicial))
 results.append(ralston(f, amplitude, limite_inf, limite_sup, valor_inicial))
-results.append(runge_kutta(f, amplitude, limite_inf, limite_sup, valor_inicial))
+results.append(runge_kutta_terceira_ordem(f, amplitude, limite_inf, limite_sup, valor_inicial))
+results.append(runge_kutta_quarta_ordem(f, amplitude, limite_inf, limite_sup, valor_inicial))
 
-plot_all(results, "outputs/exercicio_12.10_comparacao.png", ["Euler", "Euler Modificado", "Heun", "Ralston", "Runge-Kutta"])
-plot_all_side(results, "outputs/exercicio_12.10_comparacao_lado-a-lado.png", ["Euler", "Euler Modificado", "Heun", "Ralston", "Runge-Kutta"])
+plot_all(results, "outputs/exercicio_12.10_comparacao.png", ["Euler", "Euler Modificado", "Heun", "Ralston", "Runge-Kutta 3ª Ordem", "Runge-Kutta 4ª Ordem"])
+plot_all_side(results, "outputs/exercicio_12.10_comparacao_lado-a-lado.png", ["Euler", "Euler Modificado", "Heun", "Ralston", "Runge-Kutta 3ª Ordem", "Runge-Kutta 4ª Ordem"])

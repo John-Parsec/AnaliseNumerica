@@ -80,7 +80,7 @@ def main():
                 out_file.write("\n")
     
     # plota e salva o gráfico dos resultados
-    plot(results, output.replace('.txt', '.png'), 'Método de Euler Modificado')
+    # plot(results, output.replace('.txt', '.png'), 'Método de Euler Modificado')
 
 if __name__ == "__main__":
     main()
