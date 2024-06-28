@@ -76,16 +76,8 @@ def ler_entrada(filename):
 
 def main():
     # Exemplo 1
-    input = "inputs/sistema_edo/exemplo_1.txt"
-    output = "outputs/sistema_edo/exemplo_1.txt"
-    
-    # Exemplo 2
-    # input = "inputs/sistema_edo/exemplo_2.txt"
-    # output = "outputs/sistema_edo/exemplo_2.txt"
-    
-    # Exemplo 3
-    # input = "inputs/sistema_edo/exemplo_3.txt"
-    # output = "outputs/sistema_edo/exemplo_3.txt"
+    input = "inputs/sistema_edo/exercicio_12.16.txt"
+    output = "outputs/sistema_edo/exercicio_12.16.txt"
     
     eqs, params, y0, a, b, h = ler_entrada(input)
     
