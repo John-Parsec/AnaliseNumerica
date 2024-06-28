@@ -1,6 +1,18 @@
 import sympy as sp
 
-def sistema_edo(fs, h, a, b, y0):
+def sistema_edo(fs: list[sp.Expr], h: float, a: float, b: float, y0: list[float]) -> list[tuple[float, list[float]]]:
+    """Resolve um sistema de equações diferenciais ordinárias de primeira ordem pelo método de Runge-Kutta de quarta ordem.
+
+    Args:
+        fs (list[sp.Expr]): Lista de funções que representam o sistema de equações diferenciais ordinárias.
+        h (float): Tamanho do passo.
+        a (float): Limite inferior do intervalo.
+        b (float): Limite superior do intervalo.
+        y0 (list[float]): Lista de condições iniciais.
+
+    Returns:
+        list[tuple[float, list[float]]]: Lista de tuplas contendo o valor de x e o valor de y para cada iteração.
+    """
     # Verificar se o número de funções é igual ao número de condições iniciais
     assert len(fs) == len(y0), "Número de funções deve ser igual ao número de condições iniciais"
     
